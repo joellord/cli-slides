@@ -1,0 +1,18 @@
+{
+  "name": "cli-slides",
+  "version": "1.0.0",
+  "description": "A framework to create slide decks in the terminal",
+  "main": "presenter.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/joellord/cli-slides"
+  },
+  "author": "Joel Lord <joelphy@gmail.com>",
+  "license": "ISC",
+  "bin": {
+    "cli-slides": "./presenter.js"
+  }
+}
