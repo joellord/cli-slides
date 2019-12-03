@@ -37,7 +37,11 @@ class TerminalSlide extends Slide {
     }
     if (key.name === "return" && this.command) {
       if (this.command.substr(0, 2) === "rm") {
+        this.command = "";
         this.commands.push("🖕");
+        this.commands.push("$ ");
+        this.commands = this.commands.slice(-1 * (this.height - 3));
+        this.commandRow = this.commands.length - 1;
         this.render();
         return;
       };
