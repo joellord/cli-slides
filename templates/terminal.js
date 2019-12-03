@@ -36,7 +36,10 @@ class TerminalSlide extends Slide {
       this.render();
     }
     if (key.name === "return" && this.command) {
-      if (this.command.substr(0, 2) === "rm") process.exit();
+      if (this.command.substr(0, 2) === "rm") {
+        this.commands.push("🖕");
+        return;
+      };
       exec(this.command, (err, stdout, stderr) => {
         if (err) {
           this.commands.push(err.toString().split("\n")[0]);

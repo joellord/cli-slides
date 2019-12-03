@@ -66,10 +66,6 @@ class Presentation {
           return;
         }
       }
-      // if (key.name === "d") {
-      //   console.log(`${this.activeSlide.currentStep}/${this.activeSlide.steps}`);
-      //   process.exit();
-      // }
 
       if (this.activeSlide.hijackIO && originalSlide === this.currentSlide) {
         this.activeSlide.keypress(e, key);
