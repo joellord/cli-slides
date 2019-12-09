@@ -49,10 +49,18 @@ class CodeSlide extends Slide {
       this.codeToBeDisplayed = this.slide.code.map(c => format.stripStyling(c));
       this.render();
     } else {
-      let styledCode = this.slide.code.map(c => format.stripStyling(c));
-      let currentHighlight = this.highlights[this.currentStep-1];
-      styledCode = styledCode.map(c => c.replace(format.stripStyling(currentHighlight), currentHighlight))
-      this.codeToBeDisplayed = styledCode;
+      switch (this.slide.multistepType) {
+        case "highlight":
+          let styledCode = this.slide.code.map(c => format.stripStyling(c));
+          let currentHighlight = this.highlights[this.currentStep-1];
+          styledCode = styledCode.map(c => c.replace(format.stripStyling(currentHighlight), currentHighlight))
+          this.codeToBeDisplayed = styledCode;
+          break;
+        case "line": 
+          this.codeToBeDisplayed.pop();
+          break;
+      }
+
       this.render();
     }
   }
