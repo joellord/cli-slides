@@ -52,6 +52,7 @@ A slide template to display code. Code be be displayed as a whole, line by line,
 *text*: Description of the code snippet, displayed over the box.
 *notes* (optional): Adds some notes at the bottom of the slide.
 *multistep* (optional): boolean.
+*multistep* (optional): "line" or "highlight". Will display one line at a time or one highlighted item at a time.
 
 ### Diagram
 Used to display some text on the left side and some ASCII art on the right side. You're on your own to draw that diagram though.
@@ -75,6 +76,18 @@ Used to display some text on the left side and some ASCII art on the right side.
 *diagram*: An array of strings to be displayed on the right side
 
 ### List
+A list of items. Items can be displayed at once or one at a time.
+```
+{
+  "type": "list",
+  "title": "Title of the slide",
+  "list": [
+    "Item number 1",
+    "Item number 2",
+    "Item number 3"
+  ]
+}
+```
 
 ### Simple
 A simple slide with a title and some text.
@@ -91,10 +104,63 @@ A simple slide with a title and some text.
 *text*: Some text to be displayed. Text will be centered and wraps automatically. Supports multiple lines with the \n character
 
 ### Speaking
+Shows a fun little ASCII character and some text in a bubble.
+```
+{
+  "type": "speaking",
+  "character": "over-cubbie",
+  "text": "Hey there!"
+}
+```
+*character*: The preset ASCII character to display
+  * *over-cubbie* Someone looking over a wall
+  * *me*: A man smiling
+  * *me-oh-no*: Same as me with closed eyes and open mouth
+  * *silly-face*: A face with a confused look
+  * *scream*: The scream emoji converted to ASCII art
+*text*: Text to be displayed in a bubble
 
 ### Split
+If you need a 2 column template, you can use this one. For now, it's restricted to a list on the left side and some text on the right side.
+```
+{
+  "type": "split",
+  "left": {
+    "title": "Left Side Title",
+    "list": [
+      "Item 1",
+      "Item 2",
+      "Item 3"
+    ]
+  },
+  "right": {
+    "text": [
+      "You can put some text here",
+      "or maybe a diagram",
+      "",
+      "Sky's the limit"
+    ]
+  }
+}
+```
+*left*: Component on the left side
+  * *title*: Title to be displayed on the left
+  * *list*: Array of items to be displayed
+*right*: Component on the right side
+  * *text*: Text to be displayed on the right side
 
 ### Terminal
+The famous terminal inside the terminal!
+Note: The terminal does not support interactive commands and will only display the final output.
+```
+{
+  "type": "terminal",
+  "title": "Terminal Inside The Terminal",
+  "text": "You can run some shell commands here. Try 'ls'."
+}
+```
+*title*: Title at the top of the slide
+*text* (optional): Text displayed over the terminal
 
 ### Title
 Used typically as a presentation title. Will convert the text into ASCII art.
@@ -106,10 +172,41 @@ Used typically as a presentation title. Will convert the text into ASCII art.
 }
 ```
 
-*title*: The title to be displayed on this slide. Converted into ASCII art
+*title*: The title to be displayed on this slide. Converted into ASCII art. Letters only.
 
 ### TitleOnly
+Just a title slide. Can be used for section separator.
+
+```
+{
+  "type": "titleOnly",
+  "title": "New Section"
+}
+```
+
+*title*: The title to be displayed on this slide.
 
 ## Formatting
 All the strings provided to the slides can use the following styling. Note that you should always terminate your string with a _[reset]_ tag.
-
+* [bright]
+* [dim]
+* [underscore]
+* [blink] (limited support)
+* [reverse]
+* [hidden]
+* [black]
+* [red]
+* [green]
+* [yellow]
+* [blue]
+* [magenta]
+* [cyan]
+* [white]
+* [bgblack]
+* [bgred]
+* [bggreen]
+* [bgyellow]
+* [bgblue]
+* [bgmagenta]
+* [bgcyan]
+* [bgwhite]
