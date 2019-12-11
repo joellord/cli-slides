@@ -87,7 +87,8 @@ class Presentation {
         line1: `[ ${this.currentSlide + 1} / ${this.slides.length} ]`
       },
       center: {
-        line1: "Red Hat OpenShift"
+        line1: this.meta.conference,
+        line2: this.meta.date
       }
     });
     this.renderCurrentSlide();
