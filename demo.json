@@ -4,6 +4,7 @@
   "date": "November 25, 2019",
   "conference": "This Event",
   "location": "Toronto, Canada",
+  "company": "Red Hat OpenShift",
   "twitter": {
     "presenter": "@joel__lord",
     "event": "#EventHashtag"

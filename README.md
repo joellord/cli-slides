@@ -20,6 +20,7 @@ The slides file uses the following syntax. Those properties are used for the pre
   "presenter": "Joel Lord",     // Name of the presenter / author
   "date": "November 25, 2019",  // Date of the event
   "conference": "This Event",   // Conference name
+  "company": "Red Hat",         // Company / Organization
   "location": "Toronto, Canada",// Event location
   "twitter": {                  // Twitter information about the presenter and event
     "presenter": "@joel__lord",
