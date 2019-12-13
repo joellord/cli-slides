@@ -1,6 +1,6 @@
 {
   "name": "cli-slides",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A framework to create slide decks in the terminal",
   "main": "presenter.js",
   "scripts": {

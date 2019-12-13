@@ -1,5 +1,6 @@
 const writer = require("./helpers/writer");
 const readline = require("readline");
+const helpers = require("./helpers/helpers");
 const fs = require("fs");
 
 const DiagramSlide = require("./templates/diagram");
@@ -31,6 +32,45 @@ class Presentation {
     this.slides = presentationObject.slides;
     presentationObject.slides = undefined;
     this.meta = presentationObject;
+
+    this.frame = {};
+    if (presentationObject.frame && presentationObject.frame.top && presentationObject.frame.top.center) {
+      let text = helpers.objectPropByString(presentationObject, presentationObject.frame.top.center);
+      if (!text) text = presentationObject.frame.top.center;
+      this.frame.top = text;
+    } else {
+      this.frame.top = presentationObject.title;
+    }
+    this.frame.bottom = {left: [], center: []};
+    if (presentationObject.frame && presentationObject.frame.bottom && presentationObject.frame.bottom.left) {
+      if (!Array.isArray(presentationObject.frame.bottom.left)) {
+        presentationObject.frame.bottom.left = [presentationObject.frame.bottom.left];
+      }
+      presentationObject.frame.bottom.left.map(data => {
+        let text = helpers.objectPropByString(presentationObject, data);
+        if (!text) text = data;
+        this.frame.bottom.left.push(text);
+      });
+    } else {
+      this.frame.bottom.left = [
+        presentationObject.twitter.presenter,
+        presentationObject.twitter.event
+      ];
+    }
+    if (presentationObject.frame && presentationObject.frame.bottom && presentationObject.frame.bottom.center) {
+      if (!Array.isArray(presentationObject.frame.bottom.center)) {
+        presentationObject.frame.bottom.center = [presentationObject.frame.bottom.center];
+      }
+      presentationObject.frame.bottom.center.map(data => {
+        let text = helpers.objectPropByString(presentationObject, data);
+        if (!text) text = data;
+        this.frame.bottom.center.push(text);
+      });
+    } else {
+      this.frame.bottom.center = [
+        presentationObject.company
+      ];
+    }
 
     this.currentSlide = 0;
     this.command = "";
@@ -77,17 +117,18 @@ class Presentation {
 
   renderDeck() {
     writer.clearScreen();
-    this.renderHeader(this.meta.title);
+    this.renderHeader(this.frame.top);
     this.renderFooter({
       left: {
-        line1: this.meta.twitter.presenter,
-        line2: this.meta.twitter.event
+        line1: this.frame.bottom.left[0],
+        line2: this.frame.bottom.left[1]
       },
       right: {
         line1: `[ ${this.currentSlide + 1} / ${this.slides.length} ]`
       },
       center: {
-        line1: this.meta.company
+        line1: this.frame.bottom.center[0],
+        line2: this.frame.bottom.center[1]
       }
     });
     this.renderCurrentSlide();

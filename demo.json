@@ -9,6 +9,15 @@
     "presenter": "@joel__lord",
     "event": "#EventHashtag"
   },
+  "frame": {
+    "top": {
+      "center": "title"
+    },
+    "bottom": {
+      "left": ["twitter.presenter", "twitter.event"],
+      "center": "company"
+    }
+  },
   "slides": [
     {
       "type": "code",

@@ -26,10 +26,24 @@ The slides file uses the following syntax. Those properties are used for the pre
     "presenter": "@joel__lord",
     "event": "#EventHashtag"
   },
+  "frame": {                    // This object is optional
+    "top": {                    
+      "center": "title"         // Text displayed at the top
+    },
+    "bottom": {                 // Text displayed at the bottom (see frame section)
+      "left": ["twitter.presenter", "twitter.event"],
+      "center": "company"
+    }
+  },
   "slides": []                  // An array containing the slide definitions
 }
 
 ```
+
+### Frame metadata
+You can specify what to display at the top of the slides, in the center by setting the frame.top.center property. CLI-slides will try to find a matching property in the deck definition or will display the text as a specified.
+
+You can also customize the bottom part. The bottom section takes up to two lines. The frame.bottom.left and frame.bottom.center properties both take a string (for a single line) or an array of strings (if you need two lines). The strings can either be the property to display in the deck definition file or some text to be displayed.
 
 ## Slide Templates
 Many slide templates are available, each one has a slightly different structure.
