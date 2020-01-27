@@ -133,6 +133,7 @@ Shows a fun little ASCII character and some text in a bubble.
   * *me-oh-no*: Same as me with closed eyes and open mouth
   * *silly-face*: A face with a confused look
   * *scream*: The scream emoji converted to ASCII art
+  
 *text*: Text to be displayed in a bubble
 
 ### Split

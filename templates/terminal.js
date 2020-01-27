@@ -2,7 +2,7 @@ const Slide = require("../slide");
 const writer = require("../helpers/writer");
 const format = require("../helpers/format");
 const components = require("../helpers/components");
-const { exec } = require("child_process");
+const { spawn } = require("child_process");
 
 class TerminalSlide extends Slide {
   constructor(props) {
@@ -30,7 +30,7 @@ class TerminalSlide extends Slide {
       this.command += e;
       this.render();
     }
-    if (key.name === "backspace") {
+    if (key.name === "backspace" && this.command) {
       this.commands[this.commandRow] = this.commands[this.commandRow].substr(0, this.commands[this.commandRow].length - 1);
       this.command = this.command.substr(0, this.command.length - 1);
       this.render();
@@ -39,23 +39,39 @@ class TerminalSlide extends Slide {
       if (this.command.substr(0, 2) === "rm") {
         this.command = "";
         this.commands.push("🖕");
+        this.commands.push("");
         this.commands.push("$ ");
-        this.commands = this.commands.slice(-1 * (this.height - 3));
         this.commandRow = this.commands.length - 1;
         this.render();
         return;
       };
-      exec(this.command, (err, stdout, stderr) => {
-        if (err) {
-          this.commands.push(err.toString().split("\n")[0]);
-        }
-        stdout.split("\n").map(s => s ? this.commands.push(s) : "");
-        stderr.split("\n").map(s => s ? this.commands.push(s) : "");
-        this.command = "";
-        this.commands.push("$ ");        
-        this.commands = this.commands.slice(-1 * (this.height - 3));
-        this.commandRow = this.commands.length - 1;
+      let instructions = this.command.split(" ");
+      let commandToRun = instructions[0];
+      let args = instructions.splice(1);
 
+      this.commands.push("");
+      this.command = "";
+      this.render();
+
+      let child = spawn(commandToRun, args);
+      child.stdout.on("readable", () => {
+        let char = child.stdout.read();
+        if (!char) return;
+        char = char.toString().split("");
+        for (let i = 0; i < char.length; i++) {
+          if (char[i] === "\n") {
+            this.commands.push("");
+          } else {
+            this.commands[this.commands.length - 1] += char[i];
+          }
+          this.render();
+        }
+      });
+      child.on("exit", code => {
+        if (code !== 0) {
+          this.commands.push("Error processing command");
+        }
+        this.commands.push("$ ");
         this.render();
       });
     }
@@ -72,6 +88,9 @@ class TerminalSlide extends Slide {
     let terminalHeight = this.height;
 
     writer.box(terminalMargin, terminalFirstRow, terminalWidth, terminalHeight, true, false);
+
+    this.commands = this.commands.slice(-1 * (terminalHeight - 3));
+    this.commandRow = this.commands.length - 1;
 
     this.commands.map((c, index) => {
       if (this.truncateTerminalOutput && c.length > this.width - 5) {
