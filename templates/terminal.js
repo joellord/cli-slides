@@ -67,9 +67,12 @@ class TerminalSlide extends Slide {
           this.render();
         }
       });
+      child.stderr.on("data", data => {
+        data.toString().split("\n").map(d => this.commands.push(d));
+      });
       child.on("exit", code => {
         if (code !== 0) {
-          this.commands.push("Error processing command");
+          // this.commands.push("Error processing command");
         }
         this.commands.push("$ ");
         this.render();
