@@ -40,6 +40,16 @@ The slides file uses the following syntax. Those properties are used for the pre
 
 ```
 
+### JSON Schema
+
+A Json schema is available in [./assets/json-schema.json](/assets/json-schema.json). You can use it in your JSON like so:
+
+```json
+{
+    "$schema": "https://raw.githubusercontent.com/joellord/cli-slides/master/assets/json-schema.json"
+}
+```
+
 ### Frame metadata
 You can specify what to display at the top of the slides, in the center by setting the frame.top.center property. CLI-slides will try to find a matching property in the deck definition or will display the text as a specified.
 
