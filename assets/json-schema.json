@@ -1,533 +1,430 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "type": "object",
-    "properties": {
-      "title": {
-        "type": "string"
-      },
-      "presenter": {
-        "type": "string"
-      },
-      "date": {
-        "type": "string"
-      },
-      "conference": {
-        "type": "string"
-      },
-      "location": {
-        "type": "string"
-      },
-      "company": {
-        "type": "string"
-      },
-      "twitter": {
-        "type": "object",
-        "properties": {
-          "presenter": {
-            "type": "string"
-          },
-          "event": {
-            "type": "string"
-          }
-        },
-        "additionalProperties": true,
-        "required": [
-          "presenter",
-          "event"
-        ]
-      },
-      "frame": {
-        "type": "object",
-        "properties": {
-          "top": {
-            "type": "object",
-            "properties": {
-              "center": {
-                "type": "string"
-              }
-            },
-            "additionalProperties": true,
-            "required": [
-              "center"
-            ]
-          },
-          "bottom": {
-            "type": "object",
-            "properties": {
-              "left": {
-                "type": "array",
-                "items": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": "string"
-                  }
-                ],
-                "additionalItems": true
-              },
-              "center": {
-                "type": "string"
-              }
-            },
-            "additionalProperties": true,
-            "required": [
-              "left",
-              "center"
-            ]
-          }
-        },
-        "additionalProperties": true,
-        "required": [
-          "top",
-          "bottom"
-        ]
-      },
-      "slides": {
-        "type": "array",
-        "items": [
-          {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string"
-              },
-              "title": {
-                "type": "string"
-              },
-              "text": {
-                "type": "string"
-              },
-              "code": {
-                "type": "string"
-              }
-            },
-            "additionalProperties": true,
-            "required": [
-              "type",
-              "title",
-              "text",
-              "code"
-            ]
-          },
-          {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string"
-              },
-              "title": {
-                "type": "string"
-              },
-              "multistep": {
-                "type": "boolean"
-              },
-              "multistepType": {
-                "type": "string"
-              },
-              "text": {
-                "type": "string"
-              },
-              "code": {
-                "type": "string"
-              },
-              "notes": {
-                "type": "string"
-              }
-            },
-            "additionalProperties": true,
-            "required": [
-              "type",
-              "title",
-              "multistep",
-              "multistepType",
-              "text",
-              "code",
-              "notes"
-            ]
-          },
-          {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string"
-              },
-              "title": {
-                "type": "string"
-              },
-              "multistep": {
-                "type": "boolean"
-              },
-              "multistepType": {
-                "type": "string"
-              },
-              "text": {
-                "type": "string"
-              },
-              "code": {
-                "type": "array",
-                "items": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": "string"
-                  }
-                ],
-                "additionalItems": true
-              },
-              "notes": {
-                "type": "string"
-              }
-            },
-            "additionalProperties": true,
-            "required": [
-              "type",
-              "title",
-              "multistep",
-              "multistepType",
-              "text",
-              "code",
-              "notes"
-            ]
-          },
-          {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string"
-              },
-              "title": {
-                "type": "string"
-              },
-              "diagram": {
-                "type": "array",
-                "items": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": "string"
-                  }
-                ],
-                "additionalItems": true
-              }
-            },
-            "additionalProperties": true,
-            "required": [
-              "type",
-              "title",
-              "diagram"
-            ]
-          },
-          {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string"
-              },
-              "title": {
-                "type": "string"
-              },
-              "list": {
-                "type": "array",
-                "items": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": "string"
-                  }
-                ],
-                "additionalItems": true
-              }
-            },
-            "additionalProperties": true,
-            "required": [
-              "type",
-              "title",
-              "list"
-            ]
-          },
-          {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string"
-              },
-              "character": {
-                "type": "string"
-              },
-              "text": {
-                "type": "string"
-              }
-            },
-            "additionalProperties": true,
-            "required": [
-              "type",
-              "character",
-              "text"
-            ]
-          },
-          {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string"
-              },
-              "character": {
-                "type": "string"
-              },
-              "text": {
-                "type": "string"
-              }
-            },
-            "additionalProperties": true,
-            "required": [
-              "type",
-              "character",
-              "text"
-            ]
-          },
-          {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string"
-              },
-              "character": {
-                "type": "string"
-              },
-              "text": {
-                "type": "string"
-              }
-            },
-            "additionalProperties": true,
-            "required": [
-              "type",
-              "character",
-              "text"
-            ]
-          },
-          {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string"
-              },
-              "character": {
-                "type": "string"
-              },
-              "text": {
-                "type": "string"
-              }
-            },
-            "additionalProperties": true,
-            "required": [
-              "type",
-              "character",
-              "text"
-            ]
-          },
-          {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string"
-              },
-              "character": {
-                "type": "string"
-              },
-              "text": {
-                "type": "string"
-              }
-            },
-            "additionalProperties": true,
-            "required": [
-              "type",
-              "character",
-              "text"
-            ]
-          },
-          {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string"
-              },
-              "title": {
-                "type": "string"
-              },
-              "text": {
-                "type": "string"
-              }
-            },
-            "additionalProperties": true,
-            "required": [
-              "type",
-              "title",
-              "text"
-            ]
-          },
-          {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string"
-              },
-              "left": {
-                "type": "object",
-                "properties": {
-                  "title": {
-                    "type": "string"
-                  },
-                  "list": {
-                    "type": "array",
-                    "items": [
-                      {
-                        "type": "string"
-                      },
-                      {
-                        "type": "string"
-                      },
-                      {
-                        "type": "string"
-                      }
-                    ],
-                    "additionalItems": true
-                  }
-                },
-                "additionalProperties": true,
-                "required": [
-                  "title",
-                  "list"
-                ]
-              },
-              "right": {
-                "type": "object",
-                "properties": {
-                  "text": {
-                    "type": "array",
-                    "items": [
-                      {
-                        "type": "string"
-                      },
-                      {
-                        "type": "string"
-                      },
-                      {
-                        "type": "string"
-                      },
-                      {
-                        "type": "string"
-                      }
-                    ],
-                    "additionalItems": true
-                  }
-                },
-                "additionalProperties": true,
-                "required": [
-                  "text"
-                ]
-              }
-            },
-            "additionalProperties": true,
-            "required": [
-              "type",
-              "left",
-              "right"
-            ]
-          },
-          {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string"
-              },
-              "title": {
-                "type": "string"
-              },
-              "text": {
-                "type": "string"
-              }
-            },
-            "additionalProperties": true,
-            "required": [
-              "type",
-              "title",
-              "text"
-            ]
-          },
-          {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string"
-              },
-              "title": {
-                "type": "string"
-              }
-            },
-            "additionalProperties": true,
-            "required": [
-              "type",
-              "title"
-            ]
-          },
-          {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string"
-              },
-              "title": {
-                "type": "string"
-              }
-            },
-            "additionalProperties": true,
-            "required": [
-              "type",
-              "title"
-            ]
-          }
-        ],
-        "additionalItems": true
-      }
-    },
-    "additionalProperties": true,
-    "required": [
-      "title",
-      "presenter",
-      "date",
-      "conference",
-      "location",
-      "company",
-      "twitter",
-      "frame",
-      "slides"
-    ]
-  }
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"type": "object",
+	"properties": {
+		"title": {
+			"description": "Title of the presentation",
+			"type": "string"
+		},
+		"presenter": {
+			"description": "Name of the presenter / author",
+			"type": "string"
+		},
+		"date": {
+			"description": "Date of the event",
+			"type": "string"
+		},
+		"conference": {
+			"description": "Conference name",
+			"type": "string"
+		},
+		"location": {
+			"description": "Event location",
+			"type": "string"
+		},
+		"company": {
+			"description": "Company / Organization",
+			"type": "string"
+		},
+		"twitter": {
+			"type": "object",
+			"description": "Twitter information about the presenter and event",
+			"properties": {
+				"presenter": {
+					"description": "Twitter handle of the presenter",
+					"type": "string"
+				},
+				"event": {
+					"description": "Twitter hashtag for the event",
+					"type": "string"
+				}
+			},
+			"required": ["presenter", "event"]
+		},
+		"frame": {
+			"type": "object",
+			"properties": {
+				"top": {
+          "description": "Text displayed at the top",
+					"type": "object",
+					"properties": {
+						"center": {
+							"type": "string"
+						}
+					},
+					"required": ["center"]
+				},
+				"bottom": {
+          "description": "Text displayed at the bottom",
+					"type": "object",
+					"properties": {
+						"left": {
+							"type": "array",
+							"items": [
+								{
+									"type": "string"
+								},
+								{
+									"type": "string"
+								}
+							],
+							"additionalItems": true
+						},
+						"center": {
+							"type": "string"
+						}
+					},
+					"required": ["left", "center"]
+				}
+			},
+			"required": ["top", "bottom"]
+		},
+		"slides": {
+			"type": "array",
+			"items": [
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"type": "string"
+						},
+						"title": {
+							"type": "string"
+						},
+						"text": {
+							"type": "string"
+						},
+						"code": {
+							"type": "string"
+						}
+					},
+					"required": ["type", "title", "text", "code"]
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"type": "string"
+						},
+						"title": {
+							"type": "string"
+						},
+						"multistep": {
+							"type": "boolean"
+						},
+						"multistepType": {
+							"type": "string"
+						},
+						"text": {
+							"type": "string"
+						},
+						"code": {
+							"type": "string"
+						},
+						"notes": {
+							"type": "string"
+						}
+					},
+					"required": ["type", "title", "multistep", "multistepType", "text", "code", "notes"]
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"type": "string"
+						},
+						"title": {
+							"type": "string"
+						},
+						"multistep": {
+							"type": "boolean"
+						},
+						"multistepType": {
+							"type": "string"
+						},
+						"text": {
+							"type": "string"
+						},
+						"code": {
+							"type": "array",
+							"items": [
+								{
+									"type": "string"
+								},
+								{
+									"type": "string"
+								},
+								{
+									"type": "string"
+								}
+							],
+							"additionalItems": true
+						},
+						"notes": {
+							"type": "string"
+						}
+					},
+					"required": ["type", "title", "multistep", "multistepType", "text", "code", "notes"]
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"type": "string"
+						},
+						"title": {
+							"type": "string"
+						},
+						"diagram": {
+							"type": "array",
+							"items": [
+								{
+									"type": "string"
+								},
+								{
+									"type": "string"
+								},
+								{
+									"type": "string"
+								},
+								{
+									"type": "string"
+								},
+								{
+									"type": "string"
+								},
+								{
+									"type": "string"
+								},
+								{
+									"type": "string"
+								},
+								{
+									"type": "string"
+								}
+							],
+							"additionalItems": true
+						}
+					},
+					"required": ["type", "title", "diagram"]
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"type": "string"
+						},
+						"title": {
+							"type": "string"
+						},
+						"list": {
+							"type": "array",
+							"items": [
+								{
+									"type": "string"
+								},
+								{
+									"type": "string"
+								},
+								{
+									"type": "string"
+								}
+							],
+							"additionalItems": true
+						}
+					},
+					"required": ["type", "title", "list"]
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"type": "string"
+						},
+						"character": {
+							"type": "string"
+						},
+						"text": {
+							"type": "string"
+						}
+					},
+					"required": ["type", "character", "text"]
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"type": "string"
+						},
+						"character": {
+							"type": "string"
+						},
+						"text": {
+							"type": "string"
+						}
+					},
+					"required": ["type", "character", "text"]
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"type": "string"
+						},
+						"character": {
+							"type": "string"
+						},
+						"text": {
+							"type": "string"
+						}
+					},
+					"required": ["type", "character", "text"]
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"type": "string"
+						},
+						"character": {
+							"type": "string"
+						},
+						"text": {
+							"type": "string"
+						}
+					},
+					"required": ["type", "character", "text"]
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"type": "string"
+						},
+						"character": {
+							"type": "string"
+						},
+						"text": {
+							"type": "string"
+						}
+					},
+					"required": ["type", "character", "text"]
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"type": "string"
+						},
+						"title": {
+							"type": "string"
+						},
+						"text": {
+							"type": "string"
+						}
+					},
+					"required": ["type", "title", "text"]
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"type": "string"
+						},
+						"left": {
+							"type": "object",
+							"properties": {
+								"title": {
+									"type": "string"
+								},
+								"list": {
+									"type": "array",
+									"items": [
+										{
+											"type": "string"
+										},
+										{
+											"type": "string"
+										},
+										{
+											"type": "string"
+										}
+									],
+									"additionalItems": true
+								}
+							},
+							"required": ["title", "list"]
+						},
+						"right": {
+							"type": "object",
+							"properties": {
+								"text": {
+									"type": "array",
+									"items": [
+										{
+											"type": "string"
+										},
+										{
+											"type": "string"
+										},
+										{
+											"type": "string"
+										},
+										{
+											"type": "string"
+										}
+									],
+									"additionalItems": true
+								}
+							},
+							"required": ["text"]
+						}
+					},
+					"required": ["type", "left", "right"]
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"type": "string"
+						},
+						"title": {
+							"type": "string"
+						},
+						"text": {
+							"type": "string"
+						}
+					},
+					"required": ["type", "title", "text"]
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"type": "string"
+						},
+						"title": {
+							"type": "string"
+						}
+					},
+					"required": ["type", "title"]
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"type": "string"
+						},
+						"title": {
+							"type": "string"
+						}
+					},
+					"required": ["type", "title"]
+				}
+			],
+			"additionalItems": true
+		}
+	},
+	"additionalProperties": true,
+	"required": ["title", "presenter", "date", "conference", "location", "company", "twitter", "slides"]
+}
