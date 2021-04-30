@@ -73,8 +73,7 @@
 						"center": {
 							"type": "string"
 						}
-					},
-					"required": ["left", "center"]
+					}
 				}
 			},
 			"required": ["top", "bottom"]
