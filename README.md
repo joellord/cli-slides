@@ -77,7 +77,7 @@ cli-slides path/to/presentation.json 2
 If you would prefer to start your presentation through JavaScript, for example if you want to be able to call `node start-slides.js` then you can create a script like this:
 
 ```js
-const Presentation = require("cli-slides/presentation");
+const Presentation = require("cli-slides");
 const { join } = require("path");
 
 const startSheet = process.argv?.[2] ?? 1;
@@ -91,7 +91,7 @@ presentation.start(startSheet);
 Or when using ESM:
 
 ```js
-import Presentation from "cli-slides/presentation.js";
+import Presentation from "cli-slides";
 import { fileURLToPath, URL } from "node:url";
 
 const startSheet = process.argv?.[2] ?? 1;
