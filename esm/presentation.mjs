@@ -1,3 +1,3 @@
-import mod from "../src/presentation.js";
+import Presentation from "../src/presentation.js";
 
-export default mod;
+export default Presentation;
