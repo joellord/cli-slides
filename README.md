@@ -35,9 +35,9 @@
 
 ## About
 
-CLI Slides is a framework to build slide decks that will run in the terminal. This application will use a JSON file to generate a full slide deck. You can use many of the different templates for the slides or, if you feel adventurous, you can create your own.
+CLI Slides is a framework to build slide decks that will run in the terminal. This application will use a JSON file to generate a full slide deck. You can use many of the different templates for the slides - or, if you feel adventurous, you can even create your own.
 
-Once you start the presentation tool, it will support hot reloading of you slide deck. This means you can open your presentation, change the JSON file and you should immediately see the changes in your terminal.
+Once you start the presentation tool, it comes with hot reloading for your slide deck, so you can change the JSON file and preview your changes on the fly.
 
 ## Installation
 
@@ -59,13 +59,13 @@ pnpm add --global cli-slides
 
 ## Usage
 
-After infalling `cli-slides` you can start your slidedeck by passing it the slidedeck JSON file as first argument:
+After installing `cli-slides` you can start your slidedeck by passing it the slidedeck JSON file as the first argument, like so:
 
 ```sh
 cli-slides path/to/presentation.json
 ```
 
-Optionally you can also provide a second argument to directly jump to the slide with that index (1-based):
+Optionally, you can also provide a second argument to directly jump to the slide with the specified index (starting from 1):
 
 ```sh
 cli-slides path/to/presentation.json 2
@@ -74,7 +74,7 @@ cli-slides path/to/presentation.json 2
 
 ### Starting through JavaScript
 
-If you would prefer to start your presentation through JavaScript, for example if you want to be able to call `node start-slides.js` then you can create a script like this:
+If you would prefer to start your presentation through JavaScript, for example if you want to be able to call `node start-slides.js`, then you can create a script like this:
 
 ```js
 const Presentation = require("cli-slides");
@@ -136,7 +136,7 @@ The slides file uses the following syntax. Those properties are used for the pre
 
 ### JSON Schema
 
-A Json schema is available in [./assets/json-schema.json](/assets/json-schema.json). You can use it in your JSON like so:
+A JSON schema is available at [`assets/json-schema.json`](assets/json-schema.json). You can use it in your JSON like so:
 
 ```json
 {
@@ -146,7 +146,7 @@ A Json schema is available in [./assets/json-schema.json](/assets/json-schema.js
 
 ### Frame metadata
 
-You can specify what to display at the top of the slides, in the center by setting the `frame.top.center` property. CLI-slides will try to find a matching property in the deck definition or will display the text as a specified.
+You can specify content to display centered at the top with the `frame.top.center` property. First, `cli-slides` will attempt to find a property matching the value you set, but if one doesn't exist, it will display the specified text.
 
 You can also customize the bottom part. The bottom section takes up to two lines. The `frame.bottom.left` and `frame.bottom.center` properties both take a string (for a single line) or an array of strings (if you need two lines). The strings can either be the property to display in the deck definition file or some text to be displayed.
 
@@ -171,15 +171,15 @@ A slide template to display code. Code be be displayed as a whole, line by line,
 ```
 
 - `title`: The title to be displayed on this slide.
-- `code`: The code snippet to be displayed, will be enclosed in a box. Use an array to display multiple lines of code.
+- `code`: The code snippet to be displayed inside of a code block. Use an array to display multiple lines of code.
 - `text`: Description of the code snippet, displayed over the box.
 - `notes` (optional): Adds some notes at the bottom of the slide.
-- `multistep` (optional): boolean.
-- `multistepType` (optional): "line" or "highlight". Will display one line at a time or one highlighted item at a time.
+- `multistep` (optional): A boolean to toggle multistep mode.
+- `multistepType` (optional): This can take two values; "line", or "highlight". "line" displays one line at a time, "highlight" displays one highlighted item at a time.
 
 #### Diagram
 
-Used to display some text on the left side and some ASCII art on the right side. You're on your own to draw that diagram though.
+Used to display some text on the left side and some ASCII art on the right side. Drawing the diagram is your responsibility, though - there are none provided with `cli-slides`.
 
 ```json
 {
@@ -199,11 +199,11 @@ Used to display some text on the left side and some ASCII art on the right side.
 ```
 
 - `title`: The title to be displayed on the left side of the slide.
-- `diagram`: An array of strings to be displayed on the right side.
+- `diagram`: An array of strings to be displayed as lines of ASCII art on the right of the slide.
 
 #### List
 
-A list of items. Items can be displayed at once or one at a time.
+A list of items. Items can either be displayed one at a time, or all at once.
 
 ```json
 {
@@ -229,7 +229,7 @@ A simple slide with a title and some text.
 ```
 
 - `title`: The title to be displayed on this slide.
-- `text`: Some text to be displayed. Text will be centred and wraps automatically. Supports multiple lines with the \n character
+- `text`: Some text to be displayed. Text will be centred and wraps automatically. Supports multiple lines with a newline escape (`\n`).
 
 #### Speaking
 
@@ -246,10 +246,10 @@ Shows a fun little ASCII character and some text in a bubble.
 - `character`: The preset ASCII character to display
   - `over-cubbie` Someone looking over a wall
   - `me`: A man smiling
-  - `me-oh-no`: Same as me with closed eyes and open mouth
+  - `me-oh-no`: The same as `me`, but with closed eyes and open mouth
   - `silly-face`: A face with a confused look
   - `scream`: The scream emoji converted to ASCII art
-- `text`: Text to be displayed in a bubble
+- `text`: Text to be displayed next to the character in a speech bubble
 
 #### Split
 
@@ -276,7 +276,7 @@ If you need a 2 column template, you can use this one. For now, it's restricted 
 
 #### Terminal
 
-The famous terminal inside the terminal!
+The famous terminal-in-a-terminal! ~~(obligatory inception joke goes here)~~
 _Note: The terminal does not support interactive commands and will only display the final output._
 
 ```json
@@ -305,7 +305,7 @@ Used typically as a presentation title. Will convert the text into ASCII art.
 
 #### TitleOnly
 
-Just a title slide. Can be used for section separator.
+Just a title slide, typically used as a section separator.
 
 ```json
 {

@@ -142,7 +142,7 @@
   "required": ["title", "presenter", "date", "conference", "location", "company", "twitter", "slides"],
   "definitions": {
     "codeSlide": {
-      "description": "A slide template to display code. Code be be displayed as a whole, line by line, or one highlighted section at a time.",
+      "description": "A slide template to display code. Code can be displayed as a whole, line by line, or one highlighted section at a time.",
       "properties": {
         "title": {
           "type": "string",
@@ -152,7 +152,7 @@
         "multistep": {
           "type": "boolean",
           "default": false,
-          "description": "Whether this slide should show it's content in multiple steps, advancing a step every time the enter key is pressed."
+          "description": "Whether this slide should show its content in multiple steps, advancing a step every time the enter key is pressed."
         },
         "multistepType": {
           "type": "string",
@@ -166,7 +166,7 @@
           "description": "Description of the code snippet, displayed over the box"
         },
         "code": {
-          "description": "The code snippet to be displayed, will be enclosed in a box. Use an array to display multiple lines of code.",
+          "description": "The code snippet to be displayed in a code block. Use an array to display multiple lines of code.",
           "oneOf": [
             {
               "type": "string",
@@ -192,7 +192,7 @@
       "required": ["title", "text", "code"]
     },
     "diagramSlide": {
-      "description": "Used to display some text on the left side and some ASCII art on the right side. You're on your own to draw that diagram though.",
+      "description": "Used to display some text on the left side and some ASCII art on the right side. The ASCII art is down to you though, there are none provided by `cli-slides`.",
       "properties": {
         "title": {
           "type": "string",
@@ -240,7 +240,7 @@
         "text": {
           "type": "string",
           "default": "",
-          "description": "Some text to be displayed. Text will be centered and wraps automatically. Supports multiple lines with the \n character"
+          "description": "Some text to be displayed. Text will be centered and wraps automatically. Supports multiple lines with a newline escape (\n).
         }
       },
       "required": ["title", "text"]
@@ -252,7 +252,7 @@
           "type": "string",
           "enum": ["over-cubbie", "me", "me-oh-no", "silly-face", "scream"],
           "title": "The preset ASCII character to display",
-          "description": "- over-cubbie: Someone looking over a wall\n- me: A man smiling\n- me-oh-no: Same as me, with closed eyes and open mouth\n- silly-face: A face with confused look\n- scream: The scream emoji converted to ASCII art"
+          "description": "- over-cubbie: Someone looking over a wall\n- me: A man smiling\n- me-oh-no: Same as me, with closed eyes and an open mouth\n- silly-face: A face with confused look\n- scream: The scream emoji converted to ASCII art"
         },
         "text": {
           "type": "string",
@@ -310,7 +310,7 @@
       "required": ["left", "right"]
     },
     "terminalSlide": {
-      "title": "The famous terminal inside the terminal!",
+      "title": "The famous terminal-in-a-terminal!",
       "description": "Note: The terminal does not support interactive commands and will only display the final stdout",
       "properties": {
         "title": {
@@ -338,7 +338,7 @@
       "required": ["title"]
     },
     "titleOnlySlide": {
-      "description": "Just a title slide. Can be used for section separator.",
+      "description": "Just a title slide, typically used as a section separator.",
       "properties": {
         "title": {
           "type": "string",
