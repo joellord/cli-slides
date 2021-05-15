@@ -4,7 +4,7 @@
 
 **Your slidedeck inside your terminal**
 
-[![GitHub](https://img.shields.io/github/license/joellord/cli-slides)](https://github.com/joellord/cli-slides/blob/main/LICENSE.md)
+[![GitHub](https://img.shields.io/static/v1?color=green&label=license&logo=github&message=ICS)](https://github.com/joellord/cli-slides/blob/main/LICENSE.md)
 [![npm](https://img.shields.io/npm/v/cli-slides?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/cli-slides)
 
 </div>
