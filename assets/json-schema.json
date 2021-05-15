@@ -1,429 +1,352 @@
 {
-	"$schema": "http://json-schema.org/draft-04/schema#",
-	"type": "object",
-	"properties": {
-		"title": {
-			"description": "Title of the presentation",
-			"type": "string"
-		},
-		"presenter": {
-			"description": "Name of the presenter / author",
-			"type": "string"
-		},
-		"date": {
-			"description": "Date of the event",
-			"type": "string"
-		},
-		"conference": {
-			"description": "Conference name",
-			"type": "string"
-		},
-		"location": {
-			"description": "Event location",
-			"type": "string"
-		},
-		"company": {
-			"description": "Company / Organization",
-			"type": "string"
-		},
-		"twitter": {
-			"type": "object",
-			"description": "Twitter information about the presenter and event",
-			"properties": {
-				"presenter": {
-					"description": "Twitter handle of the presenter",
-					"type": "string"
-				},
-				"event": {
-					"description": "Twitter hashtag for the event",
-					"type": "string"
-				}
-			},
-			"required": ["presenter", "event"]
-		},
-		"frame": {
-			"type": "object",
-			"properties": {
-				"top": {
-          "description": "Text displayed at the top",
-					"type": "object",
-					"properties": {
-						"center": {
-							"type": "string"
-						}
-					},
-					"required": ["center"]
-				},
-				"bottom": {
-          "description": "Text displayed at the bottom",
-					"type": "object",
-					"properties": {
-						"left": {
-							"type": "array",
-							"items": [
-								{
-									"type": "string"
-								},
-								{
-									"type": "string"
-								}
-							],
-							"additionalItems": true
-						},
-						"center": {
-							"type": "string"
-						}
-					}
-				}
-			},
-			"required": ["top", "bottom"]
-		},
-		"slides": {
-			"type": "array",
-			"items": [
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"type": "string"
-						},
-						"title": {
-							"type": "string"
-						},
-						"text": {
-							"type": "string"
-						},
-						"code": {
-							"type": "string"
-						}
-					},
-					"required": ["type", "title", "text", "code"]
-				},
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"type": "string"
-						},
-						"title": {
-							"type": "string"
-						},
-						"multistep": {
-							"type": "boolean"
-						},
-						"multistepType": {
-							"type": "string"
-						},
-						"text": {
-							"type": "string"
-						},
-						"code": {
-							"type": "string"
-						},
-						"notes": {
-							"type": "string"
-						}
-					},
-					"required": ["type", "title", "multistep", "multistepType", "text", "code", "notes"]
-				},
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"type": "string"
-						},
-						"title": {
-							"type": "string"
-						},
-						"multistep": {
-							"type": "boolean"
-						},
-						"multistepType": {
-							"type": "string"
-						},
-						"text": {
-							"type": "string"
-						},
-						"code": {
-							"type": "array",
-							"items": [
-								{
-									"type": "string"
-								},
-								{
-									"type": "string"
-								},
-								{
-									"type": "string"
-								}
-							],
-							"additionalItems": true
-						},
-						"notes": {
-							"type": "string"
-						}
-					},
-					"required": ["type", "title", "multistep", "multistepType", "text", "code", "notes"]
-				},
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"type": "string"
-						},
-						"title": {
-							"type": "string"
-						},
-						"diagram": {
-							"type": "array",
-							"items": [
-								{
-									"type": "string"
-								},
-								{
-									"type": "string"
-								},
-								{
-									"type": "string"
-								},
-								{
-									"type": "string"
-								},
-								{
-									"type": "string"
-								},
-								{
-									"type": "string"
-								},
-								{
-									"type": "string"
-								},
-								{
-									"type": "string"
-								}
-							],
-							"additionalItems": true
-						}
-					},
-					"required": ["type", "title", "diagram"]
-				},
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"type": "string"
-						},
-						"title": {
-							"type": "string"
-						},
-						"list": {
-							"type": "array",
-							"items": [
-								{
-									"type": "string"
-								},
-								{
-									"type": "string"
-								},
-								{
-									"type": "string"
-								}
-							],
-							"additionalItems": true
-						}
-					},
-					"required": ["type", "title", "list"]
-				},
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"type": "string"
-						},
-						"character": {
-							"type": "string"
-						},
-						"text": {
-							"type": "string"
-						}
-					},
-					"required": ["type", "character", "text"]
-				},
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"type": "string"
-						},
-						"character": {
-							"type": "string"
-						},
-						"text": {
-							"type": "string"
-						}
-					},
-					"required": ["type", "character", "text"]
-				},
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"type": "string"
-						},
-						"character": {
-							"type": "string"
-						},
-						"text": {
-							"type": "string"
-						}
-					},
-					"required": ["type", "character", "text"]
-				},
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"type": "string"
-						},
-						"character": {
-							"type": "string"
-						},
-						"text": {
-							"type": "string"
-						}
-					},
-					"required": ["type", "character", "text"]
-				},
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"type": "string"
-						},
-						"character": {
-							"type": "string"
-						},
-						"text": {
-							"type": "string"
-						}
-					},
-					"required": ["type", "character", "text"]
-				},
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"type": "string"
-						},
-						"title": {
-							"type": "string"
-						},
-						"text": {
-							"type": "string"
-						}
-					},
-					"required": ["type", "title", "text"]
-				},
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"type": "string"
-						},
-						"left": {
-							"type": "object",
-							"properties": {
-								"title": {
-									"type": "string"
-								},
-								"list": {
-									"type": "array",
-									"items": [
-										{
-											"type": "string"
-										},
-										{
-											"type": "string"
-										},
-										{
-											"type": "string"
-										}
-									],
-									"additionalItems": true
-								}
-							},
-							"required": ["title", "list"]
-						},
-						"right": {
-							"type": "object",
-							"properties": {
-								"text": {
-									"type": "array",
-									"items": [
-										{
-											"type": "string"
-										},
-										{
-											"type": "string"
-										},
-										{
-											"type": "string"
-										},
-										{
-											"type": "string"
-										}
-									],
-									"additionalItems": true
-								}
-							},
-							"required": ["text"]
-						}
-					},
-					"required": ["type", "left", "right"]
-				},
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"type": "string"
-						},
-						"title": {
-							"type": "string"
-						},
-						"text": {
-							"type": "string"
-						}
-					},
-					"required": ["type", "title", "text"]
-				},
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"type": "string"
-						},
-						"title": {
-							"type": "string"
-						}
-					},
-					"required": ["type", "title"]
-				},
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"type": "string"
-						},
-						"title": {
-							"type": "string"
-						}
-					},
-					"required": ["type", "title"]
-				}
-			],
-			"additionalItems": true
-		}
-	},
-	"additionalProperties": true,
-	"required": ["title", "presenter", "date", "conference", "location", "company", "twitter", "slides"]
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "title": {
+      "description": "Title of the presentation",
+      "type": "string"
+    },
+    "presenter": {
+      "description": "Name of the presenter / author",
+      "type": "string"
+    },
+    "date": {
+      "description": "Date of the event",
+      "type": "string"
+    },
+    "conference": {
+      "description": "Conference name",
+      "type": "string"
+    },
+    "company": {
+      "description": "Company / Organization",
+      "type": "string"
+    },
+    "location": {
+      "description": "Event location",
+      "type": "string"
+    },
+    "twitter": {
+      "type": "object",
+      "description": "Twitter information about the presenter and event",
+      "properties": {
+        "presenter": {
+          "description": "Twitter handle of the presenter",
+          "type": "string"
+        },
+        "event": {
+          "description": "Twitter hashtag for the event",
+          "type": "string"
+        }
+      },
+      "required": ["presenter", "event"]
+    },
+    "frame": {
+      "type": "object",
+      "description": "Information shown around the frame for all slides",
+      "properties": {
+        "top": {
+          "description": "Information displayed at the top",
+          "type": "object",
+          "properties": {
+            "center": {
+              "type": "string",
+              "description": "Text displayed at the center top"
+            }
+          },
+          "default": {
+            "center": ""
+          },
+          "required": ["center"]
+        },
+        "bottom": {
+          "description": "Information displayed at the bottom. These can be references to other keys",
+          "type": "object",
+          "properties": {
+            "left": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              },
+              "description": "Text displayed at the bottom left corner"
+            },
+            "center": {
+              "type": "string",
+              "description": "Text disabled at the bottom center"
+            }
+          },
+          "default": {
+            "left": ["twitter.presenter", "twitter.event"],
+            "center": "company"
+          },
+          "required": ["left", "center"]
+        }
+      },
+      "required": ["top", "bottom"]
+    },
+    "slides": {
+      "type": "array",
+      "description": "The slides that should be rendered",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["code", "diagram", "list", "simple", "speaking", "split", "terminal", "title", "titleOnly"],
+            "description": "The type of slide"
+          }
+        },
+        "allOf": [
+          {
+            "if": { "properties": { "type": { "const": "code" } } },
+            "then": { "$ref": "#/definitions/codeSlide" }
+          },
+          {
+            "if": { "properties": { "type": { "const": "diagram" } } },
+            "then": { "$ref": "#/definitions/diagramSlide" }
+          },
+          {
+            "if": { "properties": { "type": { "const": "list" } } },
+            "then": { "$ref": "#/definitions/listSlide" }
+          },
+          {
+            "if": { "properties": { "type": { "const": "simple" } } },
+            "then": { "$ref": "#/definitions/simpleSlide" }
+          },
+          {
+            "if": { "properties": { "type": { "const": "speaking" } } },
+            "then": { "$ref": "#/definitions/speakingSlide" }
+          },
+          {
+            "if": { "properties": { "type": { "const": "split" } } },
+            "then": { "$ref": "#/definitions/splitSlide" }
+          },
+          {
+            "if": { "properties": { "type": { "const": "terminal" } } },
+            "then": { "$ref": "#/definitions/terminalSlide" }
+          },
+          {
+            "if": { "properties": { "type": { "const": "title" } } },
+            "then": { "$ref": "#/definitions/titleSlide" }
+          },
+          {
+            "if": { "properties": { "type": { "const": "titleOnly" } } },
+            "then": { "$ref": "#/definitions/titleOnlySlide" }
+          }
+        ],
+        "required": ["type"]
+      }
+    }
+  },
+  "required": ["title", "presenter", "date", "conference", "location", "company", "twitter", "slides"],
+  "definitions": {
+    "codeSlide": {
+      "description": "A slide template to display code. Code be be displayed as a whole, line by line, or one highlighted section at a time.",
+      "properties": {
+        "title": {
+          "type": "string",
+          "default": "",
+          "description": "The title of this slide"
+        },
+        "multistep": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether this slide should show it's content in multiple steps, advancing a step every time the enter key is pressed."
+        },
+        "multistepType": {
+          "type": "string",
+          "default": "highlight",
+          "enum": ["line", "highlight"],
+          "description": "Has no use when \"multistep\" is false. Determines if code should be highlighted per step, or all together. Recommended to use \"line\" when \"code\" is an array of strings, and \"highlight\" when \"code\" is a single \"string\""
+        },
+        "text": {
+          "type": "string",
+          "default": "",
+          "description": "Description of the code snippet, displayed over the box"
+        },
+        "code": {
+          "description": "The code snippet to be displayed, will be enclosed in a box. Use an array to display multiple lines of code.",
+          "oneOf": [
+            {
+              "type": "string",
+              "default": "",
+              "description": "The code snippet to be displayed, will be enclosed in a box."
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": [""],
+              "description": "The code snippet to be displayed, will be enclosed in a box and be shown in multiple lines."
+            }
+          ]
+        },
+        "notes": {
+          "type": "string",
+          "default": "",
+          "description": "Adds some notes at the bottom of the slide."
+        }
+      },
+      "required": ["title", "text", "code"]
+    },
+    "diagramSlide": {
+      "description": "Used to display some text on the left side and some ASCII art on the right side. You're on your own to draw that diagram though.",
+      "properties": {
+        "title": {
+          "type": "string",
+          "default": "",
+          "description": "The title to be displayed on the left side of the slide."
+        },
+        "diagram": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          },
+          "description": "An array of strings to be displayed on the right side"
+        }
+      },
+      "required": ["title", "diagram"]
+    },
+    "listSlide": {
+      "description": "A list of items. Items can be displayed at once or one at a time.",
+      "properties": {
+        "title": {
+          "type": "string",
+          "default": "",
+          "description": "The title of this slide"
+        },
+        "list": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          },
+          "description": "The items in the list to be shown"
+        }
+      },
+      "required": ["title", "list"]
+    },
+    "simpleSlide": {
+      "description": "A simple slide with a title and some text.",
+      "properties": {
+        "title": {
+          "type": "string",
+          "default": "",
+          "description": "The title of this slide"
+        },
+        "text": {
+          "type": "string",
+          "default": "",
+          "description": "Some text to be displayed. Text will be centered and wraps automatically. Supports multiple lines with the \n character"
+        }
+      },
+      "required": ["title", "text"]
+    },
+    "speakingSlide": {
+      "description": "Shows a fun little ASCII character and some text in a bubble.",
+      "properties": {
+        "character": {
+          "type": "string",
+          "enum": ["over-cubbie", "me", "me-oh-no", "silly-face", "scream"],
+          "title": "The preset ASCII character to display",
+          "description": "- over-cubbie: Someone looking over a wall\n- me: A man smiling\n- me-oh-no: Same as me, with closed eyes and open mouth\n- silly-face: A face with confused look\n- scream: The scream emoji converted to ASCII art"
+        },
+        "text": {
+          "type": "string",
+          "default": "",
+          "description": "Text to be displayed in the speech bubble"
+        }
+      },
+      "required": ["character", "text"]
+    },
+    "splitSlide": {
+      "description": "If you need a 2 column template, you can use this one. For now, it's restricted to a list on the left side and some text on the right side.",
+      "properties": {
+        "left": {
+          "description": "Components on the left side of this slide",
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string",
+              "default": "",
+              "description": "Title to be displayed on the left"
+            },
+            "list": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": [""],
+              "description": "Array of items to be displayed on the left"
+            }
+          },
+          "required": ["title", "list"],
+          "default": {
+            "title": "",
+            "list": [""]
+          }
+        },
+        "right": {
+          "description": "Components on the right side of this slide",
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Text to be displayed on the right side"
+            }
+          },
+          "required": ["text"],
+          "default": {
+            "text": [""]
+          }
+        }
+      },
+      "required": ["left", "right"]
+    },
+    "terminalSlide": {
+      "title": "The famous terminal inside the terminal!",
+      "description": "Note: The terminal does not support interactive commands and will only display the final stdout",
+      "properties": {
+        "title": {
+          "type": "string",
+          "default": "",
+          "description": "The title of this slide"
+        },
+        "text": {
+          "type": "string",
+          "default": "",
+          "description": "Text displayed over the terminal"
+        }
+      },
+      "required": ["title"]
+    },
+    "titleSlide": {
+      "description": "Used typically as a presentation title. Will convert the text into ASCII art.",
+      "properties": {
+        "title": {
+          "type": "string",
+          "default": "",
+          "description": "The title to be displayed on this slide. Converted into ASCII art. Letters only."
+        }
+      },
+      "required": ["title"]
+    },
+    "titleOnlySlide": {
+      "description": "Just a title slide. Can be used for section separator.",
+      "properties": {
+        "title": {
+          "type": "string",
+          "default": "",
+          "description": "The title to be displayed on this slide."
+        }
+      },
+      "required": ["title"]
+    }
+  }
 }
