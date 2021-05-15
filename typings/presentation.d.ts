@@ -8,6 +8,5 @@ declare module 'cli-slides' {
     public start(startSheet?: string | number): void;
   }
   
-  
   export = Presentation;
 }
