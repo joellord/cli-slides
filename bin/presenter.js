@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const Presentation = require("./presentation");
+const Presentation = require("../src/presentation");
 
 let presentation = new Presentation(process.argv[2]);
 

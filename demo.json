@@ -1,4 +1,5 @@
 {
+  "$schema": "./assets/json-schema.json",
   "title": "My New Talk",
   "presenter": "Joel Lord",
   "date": "November 25, 2019",

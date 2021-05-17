@@ -2,17 +2,39 @@
   "name": "cli-slides",
   "version": "1.1.0",
   "description": "A framework to create slide decks in the terminal",
-  "main": "presenter.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "github.com/joellord/cli-slides"
-  },
   "author": "Joel Lord <joelphy@gmail.com>",
   "license": "ISC",
+  "main": "./src/presentation.js",
+  "module": "./esm/presentation.mjs",
+  "types": "./typings/presentation.d.ts",
+  "exports": {
+    "require": "./src/presentation.js",
+    "import": "./esm/presentation.mjs"
+  },
   "bin": {
-    "cli-slides": "./presenter.js"
+    "cli-slides": "./bin/presenter.js"
+  },
+  "homepage": "https://github.com/joellord/cli-slides#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joellord/cli-slides.git"
+  },
+  "files": [
+    "assets",
+    "bin",
+    "esm",
+    "src",
+    "typings"
+  ],
+  "engines": {
+    "node": ">=12",
+    "npm": ">=6"
+  },
+  "keywords": [
+    "slides",
+    "cli"
+  ],
+  "bugs": {
+    "url": "https://github.com/joellord/cli-slides/issues"
   }
 }
