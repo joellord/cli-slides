@@ -240,7 +240,7 @@
         "text": {
           "type": "string",
           "default": "",
-          "description": "Some text to be displayed. Text will be centered and wraps automatically. Supports multiple lines with a newline escape (\n).
+          "description": "Some text to be displayed. Text will be centered and wraps automatically. Supports multiple lines with a newline escape (\n)."
         }
       },
       "required": ["title", "text"]
