@@ -219,11 +219,13 @@ A list of items. Items can either be displayed one at a time, or all at once.
 {
   "type": "list",
   "title": "Title of the slide",
+  "multistep": true,
   "list": ["Item number 1", "Item number 2", "Item number 3"]
 }
 ```
 
 - `title`: The title to be displayed on this slide.
+- `multistep`: When set to true, the items will be displayed on my one.
 - `list`: The list of items to be displayed on this slide.
 
 #### Simple

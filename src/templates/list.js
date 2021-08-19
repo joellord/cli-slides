@@ -7,7 +7,7 @@ class ListSlide extends Slide {
   constructor(props) {
     super(props);
 
-    this.multistep = true;
+    if(this.slide.multistep) this.multistep = true;
     this.steps = this.slide.list.length;
     this.listToBeDisplayed = [];
   }

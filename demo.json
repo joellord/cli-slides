@@ -4,8 +4,8 @@
   "presenter": "Joel Lord",
   "date": "November 25, 2019",
   "conference": "This Event",
-  "location": "Toronto, Canada",
-  "company": "Red Hat OpenShift",
+  "location": "Ottawa, Canada",
+  "company": "MongoDB",
   "twitter": {
     "presenter": "@joel__lord",
     "event": "#EventHashtag"
@@ -64,6 +64,7 @@
     {
       "type": "list",
       "title": "Title of the slide",
+      "multistep": true,
       "list": [
         "Item number 1",
         "Item number 2",
