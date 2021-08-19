@@ -72,6 +72,35 @@ class Presentation {
       ];
     }
 
+    this.frame.colors = {
+      top: ["dim", "blue"],
+      bottom: {
+        left: ["blue"],
+        center: ["green"],
+        right: ["blue"]
+      }
+    };
+    if (presentationObject.frame && presentationObject.frame.colors) {
+      if (presentationObject.frame.colors.top) {
+        if (Array.isArray(presentationObject.frame.colors.top)) {
+          this.frame.colors.top = presentationObject.frame.colors.top;
+        } else {
+          this.frame.colors.top = [presentationObject.frame.colors.top];
+        }
+      }
+      if (presentationObject.frame.colors.bottom) {
+        ["left", "center", "right"].map(alignment => {
+          if (presentationObject.frame.colors.bottom[alignment]) {
+            if (Array.isArray(presentationObject.frame.colors.bottom[alignment])) {
+              this.frame.colors.bottom[alignment] = presentationObject.frame.colors.bottom[alignment];
+            } else {
+              this.frame.colors.bottom[alignment] = [presentationObject.frame.colors.bottom[alignment]];
+            }
+          }
+        });
+      }
+    }
+
     this.currentSlide = 0;
     this.command = "";
     this.errMessage = "";
@@ -117,7 +146,7 @@ class Presentation {
 
   renderDeck() {
     writer.clearScreen();
-    this.renderHeader(this.frame.top);
+    this.renderHeader(this.frame.top, this.frame.colors.top);
     this.renderFooter({
       left: {
         line1: this.frame.bottom.left[0],
@@ -130,7 +159,7 @@ class Presentation {
         line1: this.frame.bottom.center[0],
         line2: this.frame.bottom.center[1]
       }
-    });
+    }, this.frame.colors.bottom);
     this.renderCurrentSlide();
   }
 
@@ -182,12 +211,12 @@ class Presentation {
     this.activeSlide = activeSlide;
   }
 
-  renderHeader(text) {
-    text = `[dim][blue]${text}[reset]`;
+  renderHeader(text, colors) {
+    text = `${colors.map(c => "[" + c + "]").join("")}${text}[reset]`;
     writer.printCenter(text, 0);
   }
 
-  renderFooter(options) {
+  renderFooter(options, colors) {
     const left = options.left;
     if (!left.line1) left.line1 = "";
     if (!left.line2) left.line2 = "";
@@ -201,12 +230,12 @@ class Presentation {
     const lastRow = writer.getRows() - 1;
     const cols = writer.getColumns();
 
-    if(left.line1) left.line1 = `[blue]${left.line1}[reset]`;
-    if(left.line2) left.line2 = `[blue]${left.line2}[reset]`;
-    if(right.line1) right.line1 = `[blue]${right.line1}[reset]`;
-    if(right.line2) right.line2 = `[blue]${right.line2}[reset]`;
-    if(center.line1) center.line1 = `[red]${center.line1}[reset]`;
-    if(center.line2) center.line2 = `[red]${center.line2}[reset]`;
+    if(left.line1) left.line1 = `${colors.left.map(c => "[" + c + "]").join("")}${left.line1}[reset]`;
+    if(left.line2) left.line2 = `${colors.left.map(c => "[" + c + "]").join("")}${left.line2}[reset]`;
+    if(right.line1) right.line1 = `${colors.right.map(c => "[" + c + "]").join("")}${right.line1}[reset]`;
+    if(right.line2) right.line2 = `${colors.right.map(c => "[" + c + "]").join("")}${right.line2}[reset]`;
+    if(center.line1) center.line1 = `${colors.center.map(c => "[" + c + "]").join("")}${center.line1}[reset]`;
+    if(center.line2) center.line2 = `${colors.center.map(c => "[" + c + "]").join("")}${center.line2}[reset]`;
 
     if (left.line1.length + center.line1.length + right.line1.length > cols) center.line1 = "";
     if (left.line2.length + center.line2.length + right.line2.length > cols) center.line2 = "";
