@@ -112,8 +112,8 @@ The slides file uses the following syntax. Those properties are used for the pre
   "presenter": "Joel Lord", // Name of the presenter / author
   "date": "November 25, 2019", // Date of the event
   "conference": "This Event", // Conference name
-  "company": "Red Hat", // Company / Organization
-  "location": "Toronto, Canada", // Event location
+  "company": "MongoDB", // Company / Organization
+  "location": "Ottawa, Canada", // Event location
   "twitter": {
     // Twitter information about the presenter and event
     "presenter": "@joel__lord",
@@ -128,6 +128,16 @@ The slides file uses the following syntax. Those properties are used for the pre
       // Text displayed at the bottom (see frame section)
       "left": ["twitter.presenter", "twitter.event"],
       "center": "company"
+    },
+    // Option colors for the frame, omitted colors will use defaults
+    "colors": {
+      // Colors can be a single string or array of strings
+      "top": ["dim", "red"],
+      "bottom": {
+        "left": "blue",
+        "center": "green",
+        "right": ["blink", "yellow"]
+      }
     }
   },
   "slides": [] // An array containing the slide definitions
