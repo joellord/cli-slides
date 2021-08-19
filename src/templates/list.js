@@ -9,7 +9,8 @@ class ListSlide extends Slide {
 
     if(this.slide.multistep) this.multistep = true;
     this.steps = this.slide.list.length;
-    this.listToBeDisplayed = [];
+    if (!this.multistep) this.listToBeDisplayed = this.slide.list;
+    else this.listToBeDisplayed = [];
   }
 
   renderNextStep() {
